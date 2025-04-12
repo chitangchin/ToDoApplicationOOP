@@ -6,5 +6,10 @@
         {
             return base.Add(task);
         }
+        public TaskItem GetByName(string title)
+        {
+            var taskItem = this.FirstOrDefault(task => task.Title == title);
+            return taskItem ?? throw new KeyNotFoundException($"Task with title '{title}' not found.");
+        }
     }
 }
